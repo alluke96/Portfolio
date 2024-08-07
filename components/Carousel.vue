@@ -1,10 +1,14 @@
 <template>
     <main>
-        <div ref="track" id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-            <div v-for="(image, index) in images" :key="index">
-                <img class="image" :src="image" draggable="false" @click="" />
-            </div>
+      <ClientOnly>
+        <div v-if="clientReady">
+          <div ref="track" id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+              <div v-for="(image, index) in images" :key="index">
+                  <img class="image" :src="image" draggable="false" />
+              </div>
+          </div>
         </div>
+      </ClientOnly>
     </main>
 </template>
 
@@ -52,7 +56,9 @@ const handleOnMove = (e) => {
   });
 };
 
+const clientReady = ref(false);
 onMounted(() => {
+  clientReady.value = true;
   window.addEventListener('mousedown', handleOnDown);
   window.addEventListener('touchstart', (e) => handleOnDown(e.touches[0]));
   window.addEventListener('mouseup', handleOnUp);
