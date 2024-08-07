@@ -11,4 +11,9 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./stores/**'],
   },
+  nitro: {
+    prerender: {
+      failOnError: false, 
+    },
+  },
 })
