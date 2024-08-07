@@ -26,28 +26,28 @@
 </template>
 
 <script setup lang="ts">
-    const locale = ref('pt');
-    const showModal = ref(false);
+const locale = ref('pt');
+const showModal = ref(false);
 
-    const checkModalStatus = () => {
-        const hasSeenModal = localStorage.getItem('hasSeenModal');
-        if (!hasSeenModal) {
-            showModal.value = true;
-        }
-    };
-    onMounted(() => {
-        checkModalStatus();
-    });
-
-    const selectLanguage = () => {
-        localStorage.setItem('hasSeenModal', 'true');
-        showModal.value = false;
-    };
-
-    const changeLocale = (newLocale: string) => {
-        locale.value = newLocale;
-        showModal.value = false;
+const checkModalStatus = () => {
+    const hasSeenModal = localStorage.getItem('hasSeenModal');
+    if (!hasSeenModal) {
+        showModal.value = true;
     }
+};
+onMounted(() => {
+    checkModalStatus();
+});
+
+const selectLanguage = () => {
+    localStorage.setItem('hasSeenModal', 'true');
+    showModal.value = false;
+};
+
+const changeLocale = (newLocale: string) => {
+    locale.value = newLocale;
+    showModal.value = false;
+}
 </script>
 
 <style scoped>

@@ -4,6 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@pinia/nuxt', 'nuxt-mdi'],
   app: {
+    baseURL: '/allyson-dunke-portfolio/',
+    buildAssetsDir: 'assets',
     pageTransition: { name: 'page', mode: 'out-in' }
   },
   pinia: {

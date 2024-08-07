@@ -19,28 +19,28 @@
 </template>
 
 <script setup lang="ts">
-  const props = defineProps({
-    show: {
-      type: Boolean,
-      default: false
-    },
-    persistent: {
-      type: Boolean,
-      default: false
-    },
-    backgroundColor: {
-      type: String,
-      default: 'whitesmoke'
-    }
-  });
-
-  const emit = defineEmits(['close']);
-
-  const checkPersistence = () => {
-    if (!props.persistent) {
-      emit('close');
-    }
+const props = defineProps({
+  show: {
+    type: Boolean,
+    default: false
+  },
+  persistent: {
+    type: Boolean,
+    default: false
+  },
+  backgroundColor: {
+    type: String,
+    default: 'whitesmoke'
   }
+});
+
+const emit = defineEmits(['close']);
+
+const checkPersistence = () => {
+  if (!props.persistent) {
+    emit('close');
+  }
+}
 </script>
 
 <style scoped>
