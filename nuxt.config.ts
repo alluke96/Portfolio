@@ -11,13 +11,4 @@ export default defineNuxtConfig({
   pinia: {
     storesDirs: ['./stores/**'],
   },
-  nitro: {
-    prerender: {
-      routes: [
-        '/',
-        '/about',
-      ],
-      crawlLinks: false,
-    }
-  }
 })
