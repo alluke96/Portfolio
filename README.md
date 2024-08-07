@@ -1,75 +1,30 @@
-# Nuxt 3 Minimal Starter
+## https://dunke.netlify.app/ 👆
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# 🖥️ Portfolio de Allyson Luan Dunke
 
-## Setup
+Bem-vindo ao meu portfolio pessoal! Este projeto foi desenvolvido com **Nuxt 3** para mostrar minhas habilidades e projetos como desenvolvedor.
 
-Make sure to install the dependencies:
+## 🚀 Tecnologias Utilizadas
 
-```bash
-# npm
-npm install
+- **Nuxt 3** - Framework Vue.js para criação de aplicações web
+- **Vue.js** - Biblioteca JavaScript para construção de interfaces de usuário
+- **Tailwind CSS** - Framework CSS para estilização rápida e responsiva
+- **Netlify** - Plataforma para hospedagem e deploy contínuo
 
-# pnpm
-pnpm install
+## 📂 Estrutura do Projeto
 
-# yarn
-yarn install
-
-# bun
-bun install
+```plaintext
+/
+├── components/    # Componentes Vue reutilizáveis
+├── pages/         # Páginas da aplicação
+├── layouts/       # Layouts globais
+├── stores/        # Gerenciamento de estado
+└── nuxt.config.js # Configurações do Nuxt
 ```
 
-## Development Server
+## 📧 Contato
 
-Start the development server on `http://localhost:3000`:
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para me contatar:
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Email: allyson.dunke@gmail.com
+LinkedIn: linkedin.com/in/allyson-dunke
