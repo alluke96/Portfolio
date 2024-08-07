@@ -6,9 +6,8 @@ Bem-vindo ao meu portfolio pessoal! Este projeto foi desenvolvido com **Nuxt 3**
 
 ## 🚀 Tecnologias Utilizadas
 
+- **Vue.js** - Biblioteca JavaScript/Typescript para construção de interfaces de usuário
 - **Nuxt 3** - Framework Vue.js para criação de aplicações web
-- **Vue.js** - Biblioteca JavaScript para construção de interfaces de usuário
-- **Tailwind CSS** - Framework CSS para estilização rápida e responsiva
 - **Netlify** - Plataforma para hospedagem e deploy contínuo
 
 ## 📂 Estrutura do Projeto
@@ -26,5 +25,5 @@ Bem-vindo ao meu portfolio pessoal! Este projeto foi desenvolvido com **Nuxt 3**
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para me contatar:
 
-Email: allyson.dunke@gmail.com
-LinkedIn: linkedin.com/in/allyson-dunke
+Email: allyson.dunke@gmail.com |
+LinkedIn: [https://linkedin.com/in/allyson-dunke](https://www.linkedin.com/in/allyson-dunke/)
