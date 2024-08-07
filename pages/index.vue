@@ -1,8 +1,8 @@
 <template>
     <main>
-        <!-- <Carousel /> -->
-        TEST
-        <!-- <ModalLanguage /> -->
+        <Carousel />
+
+        <ModalLanguage />
     </main>
 </template>
 
