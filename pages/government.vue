@@ -1,11 +1,13 @@
 <template>
     <main>
-        <Home />
+        <Carousel :images="images" />
     </main>
 </template>
 
 <script setup lang="ts">
-
+const images = [
+    
+]
 </script>
 
 <style scoped>

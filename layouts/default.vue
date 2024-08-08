@@ -1,8 +1,12 @@
 <template>
   <div class="layout-container">
     
-    <div class="breadcrumbs-container">
+    <!-- <div class="breadcrumbs-container">
       <Breadcrumbs v-if="!isMobile" />
+    </div> -->
+
+    <div class="header-container">
+      <Header />
     </div>
 
     <h1 class="logo-container" @click="goToAbout">
@@ -54,6 +58,13 @@ html {
   font-family: "Open Sans", sans-serif;
   background-color: #121212;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
 </style>
 
 <style scoped>
@@ -71,6 +82,12 @@ html {
   position: absolute;
   top: 20px;
   left: 20px;
+}
+
+.header-container {
+  position: absolute;
+  top: 20px;
+  translate: (0, 50%);
 }
 
 .logo-container {

@@ -60,6 +60,7 @@ const buttonClass = computed(() => {
   return {
     'btn-default': props.variant === 'default',
     'btn-outlined': props.variant === 'outlined',
+    'btn-flat': props.variant === 'flat',
   };
 })
 
@@ -108,6 +109,11 @@ button:hover {
 
 .btn-outlined {
   background-color: transparent !important;
+}
+
+.btn-flat {
+  background-color: transparent !important;
+  border: none;
 }
 
 .btn-disabled {
