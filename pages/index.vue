@@ -1,8 +1,6 @@
 <template>
     <main>
         <Carousel />
-
-        <ModalLanguage />
     </main>
 </template>
 

@@ -2,34 +2,58 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li v-for="(crumb, index) in crumbs" :key="index" class="breadcrumb-item">
-        <nuxt-link
+        <div
           v-if="index !== crumbs.length - 1"
-          :to="crumb.path"
           class="breadcrumb-not-actual"
+          @click="goToPage(crumb.path)"
         >
           {{ crumb.label }}
-        </nuxt-link>
+        </div>
         <span v-else>{{ crumb.label }}</span>
       </li>
     </ol>
   </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { useBreadcrumbStore } from '../stores/breadcrumbs'
-import { storeToRefs } from 'pinia'
+<script setup lang="ts">
+const route = useRoute();
+const { t, locale } = useI18n();
 
-export default defineComponent({
-  setup() {
-    const breadcrumbStore = useBreadcrumbStore()
-    const { breadcrumbs } = storeToRefs(breadcrumbStore)
-    
-    return {
-      crumbs: breadcrumbs
+const paths = computed(() => [
+  {
+    label: t("home"),
+    path: "",
+  },
+  {
+    label: t("about"),
+    path: "about",
+  },
+  {
+    label: t("contact"),
+    path: "contact",
+  },
+]);
+
+const crumbs = computed(() => {
+  // Remova o locale e divida o fullPath em segmentos
+  let realPaths = route.fullPath.replace(locale.value, "").replaceAll("//", "/").split("/").filter((segment, index, array) => {
+    // Permitir apenas um match ""
+    if (segment === "") {
+      return index === array.indexOf("");
     }
-  }
-})
+    return true;
+  });
+
+  // Encontre todos os paths que correspondem a cada segmento de realPaths
+  const matchedPaths = realPaths.map(realPath => paths.value.find(path => path.path === realPath)).filter(Boolean);
+
+  // Retorne o array com todos os paths correspondentes ou o primeiro path se nenhum for encontrado
+  return matchedPaths.length > 0 ? matchedPaths : [paths.value[0]];
+});
+
+const goToPage = (path: string) => {
+  navigateTo({ path: `/${locale.value}/${path}` });
+};
 </script>
 
 <style>
@@ -57,6 +81,7 @@ export default defineComponent({
 
 .breadcrumb-not-actual {
   font-weight: normal;
+  cursor: pointer;
 }
 
 .breadcrumb-item a {

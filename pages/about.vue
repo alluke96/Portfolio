@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1>Allyson Luan Dunke</h1>
+        <h2 style="color: whitesmoke">{{ $t('about_text') }}</h2>
     </main>
 </template>
 

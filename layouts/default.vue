@@ -5,7 +5,7 @@
       <Breadcrumbs v-if="!isMobile" />
     </div>
 
-    <h1 class="logo-container" @click="navigateTo('/about')">
+    <h1 class="logo-container" @click="goToAbout">
       ALLYSON<br>
       DUNKE
     </h1>
@@ -20,39 +20,19 @@
     </footer>
 
     <NuxtPage />
+
+    <ModalLanguage />
     
   </div>
 </template>
 
 <script setup lang="ts">
-  const router = useRouter();
-  const route = useRoute()
+  const { locale } = useI18n();
+  const isMobile = computed(() => { if(process.browser) return window.innerWidth < 768 ? true : false });
 
-  const breadcrumbStore = useBreadcrumbStore()
-  if (route.path === '/') breadcrumbStore.setBreadcrumbs([{ label: 'Home', path: '/' }])
-
-  router.beforeEach((to) => {
-    const breadcrumbStore = useBreadcrumbStore()
-
-    if (to.path === '/') return breadcrumbStore.setBreadcrumbs([{ label: 'Home', path: '/' }])
-
-    const pathArray = to.path.split('/').filter(path => path)
-    const crumbs = pathArray.map((path, index) => {
-      return {
-        label: getLabel(path),
-        path: '/' + pathArray.slice(0, index + 1).join('/')
-      }
-    })
-
-    if (breadcrumbStore.getBreadcrumbs().length === 0) breadcrumbStore.setBreadcrumbs([{ label: 'Home', path: '/' }])
-    breadcrumbStore.addBreadcrumb(crumbs[0])
-  })
-
-  const getLabel = (path: string): string => {
-    return path.charAt(0).toUpperCase() + path.slice(1)
+  const goToAbout = () => {
+    navigateTo({ path: `/${locale.value}/about` });
   }
-
-  const isMobile = computed(() => { if(process.browser) return window.innerWidth < 768 ? true : false })
 </script>
 
 
