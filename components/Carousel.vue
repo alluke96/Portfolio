@@ -1,31 +1,40 @@
 <template>
-    <main>
-      <ClientOnly>
-        <div v-if="clientReady">
-          <div ref="track" id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-              <div v-for="(image, index) in images" :key="index">
-                  <img class="image" :src="image" draggable="false" />
-              </div>
+  <main>
+    <ClientOnly>
+      <div v-if="clientReady">
+        <div ref="track" id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+          <div v-for="(image, index) in images" :key="index">
+            <img
+              class="image"
+              :src="image.src"
+              draggable="false"
+              @click="handleClick(image.onClick)"
+            />
           </div>
         </div>
-      </ClientOnly>
-    </main>
+      </div>
+    </ClientOnly>
+  </main>
 </template>
 
 <script setup>
 const props = defineProps({
   images: Array
-})
+});
+
 const track = ref(null);
 const mouseDownAt = ref(0);
 const prevPercentage = ref(0);
 const percentage = ref(0);
+const isDragging = ref(false);
+const clickThreshold = 5;
 
 const handleOnDown = (e) => {
   mouseDownAt.value = e.clientX;
+  isDragging.value = false;
 };
 
-const handleOnUp = () => {
+const handleOnUp = (e) => {
   mouseDownAt.value = 0;
   prevPercentage.value = percentage.value;
 };
@@ -35,6 +44,10 @@ const handleOnMove = (e) => {
 
   const mouseDelta = mouseDownAt.value - e.clientX;
   const maxDelta = window.innerWidth / 2;
+
+  if (Math.abs(mouseDelta) > clickThreshold) {
+    isDragging.value = true;
+  }
 
   const newPercentage = (mouseDelta / maxDelta) * -40;
   const nextPercentageUnconstrained = prevPercentage.value + newPercentage;
@@ -47,6 +60,12 @@ const handleOnMove = (e) => {
   Array.from(track.value.getElementsByClassName('image')).forEach((image) => {
     image.style.objectPosition = `${100 + nextPercentage}% center`;
   });
+};
+
+const handleClick = (onClick) => {
+  if (!isDragging.value) {
+    onClick();
+  }
 };
 
 const clientReady = ref(false);
@@ -68,7 +87,6 @@ onUnmounted(() => {
   window.removeEventListener('mousemove', handleOnMove);
   window.removeEventListener('touchmove', (e) => handleOnMove(e.touches[0]));
 });
-
 </script>
 
 <style scoped>
@@ -86,8 +104,8 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(0%, -50%); 
-  user-select: none; /* -- Prevent image highlighting -- */
+  transform: translate(0%, -50%);
+  user-select: none;
 }
 
 #image-track > div > .image {

@@ -5,7 +5,7 @@
       <Breadcrumbs v-if="!isMobile" />
     </div> -->
 
-    <div class="header-container">
+    <div class="header-container" v-if="$route.path !== '/pt' && $route.path !== '/en' && $route.path !== '/pt/' && $route.path !== '/en/'">
       <Header />
     </div>
 
@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
   const { locale } = useI18n();
   const isMobile = computed(() => { if(process.browser) return window.innerWidth < 768 ? true : false });
 
