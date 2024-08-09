@@ -8,12 +8,12 @@
             <div class="center">
                 <Button label="Continue em Português" @click="selectLanguage('pt');">
                     <template #prepend>
-                        <img src="/brasil.png" alt="Bandeira do Brasil" height="20" />
+                        <img src="/img/brasil.png" alt="Bandeira do Brasil" height="20" />
                     </template>
                 </Button>
                 <Button label="Switch to English" @click="selectLanguage('en');" color="#00aeff">
                     <template #prepend>
-                        <img src="/united-states.png" alt="American Flag" height="20" />
+                        <img src="/img/united-states.png" alt="American Flag" height="20" />
                     </template>
                 </Button>
             </div>

@@ -3,12 +3,12 @@
     <ClientOnly>
       <div v-if="clientReady">
         <div ref="track" id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-          <div v-for="(image, index) in images" :key="index">
+          <div v-for="(image, index) in images" :key="index" @click="handleClick(image.onClick)">
+            <span class="image-title">{{ image.title }}</span>
             <img
               class="image"
               :src="image.src"
               draggable="false"
-              @click="handleClick(image.onClick)"
             />
           </div>
         </div>
@@ -115,5 +115,27 @@ body {
   object-position: 100% center;
   cursor: pointer;
   border-radius: 4px;
+}
+
+#image-track > div {
+  position: relative;
+}
+
+#image-track > div > .image-title {
+  color: whitesmoke;
+  cursor: pointer;
+  width: 100%;
+  height: 4vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  z-index: 1;
+  font-weight: bold;
+  text-shadow: -1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, 1px 1px 0 #000;
 }
 </style>
