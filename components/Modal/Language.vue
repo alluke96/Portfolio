@@ -1,7 +1,7 @@
 <template>
     <Modal :show="showModal" @close="showModal = false" persistent background-color="#202020">
         <template #header>
-            <h2 style="color: whitesmoke">Bem vindo(a) / Welcome</h2>
+            <h2 style="color: whitesmoke">{{ hasSeenModal ? $t('change_language') : 'Bem vindo(a) / Welcome' }} </h2>
         </template>
 
         <template #body>
@@ -40,14 +40,15 @@ const props = defineProps({
 })
 
 const showModal = ref(props.showModal);
+const hasSeenModal = ref(false);
 
 watch(() => props.showModal, (newValue) => {
     showModal.value = newValue;
 });
 
 const checkModalStatus = () => {
-    const hasSeenModal = localStorage.getItem('hasSeenModal');
-    if (!hasSeenModal) {
+    hasSeenModal.value = localStorage.getItem('hasSeenModal') as string === 'true';
+    if (!hasSeenModal.value) {
         showModal.value = true;
     }
 };
@@ -59,7 +60,7 @@ onMounted(() => {
 const selectLanguage = (newLocale: string) => {
     locale.value = newLocale
     showModal.value = false
-    // localStorage.setItem('hasSeenModal', 'true');
+    localStorage.setItem('hasSeenModal', 'true');
     emit('close');
     // Change route from pt to en (old locale to new locale)
     navigateTo({ path: `/${newLocale}` });

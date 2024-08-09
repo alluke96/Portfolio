@@ -3,6 +3,7 @@ export default defineI18nConfig(() => ({
     locale: 'pt',
     messages: {
         pt: {
+            change_language: 'Mudar Idioma',
             home: 'Início',
             games: 'Jogos',
             apps: 'Apps',
@@ -16,6 +17,7 @@ export default defineI18nConfig(() => ({
             about_text: 'Olá, meu nome é Allyson. Sou desenvolvedor de software há 3 anos profissionalmente.'
         },
         en: {
+            change_language: 'Change Language',
             home: 'Home',
             games: 'Games',
             apps: 'Apps',

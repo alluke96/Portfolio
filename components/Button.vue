@@ -5,6 +5,7 @@
     @click="onClick"
     :style="buttonStyle"
     :disabled="disabled"
+    :title="tooltip"
   >
     <Loading v-if="loading" :color="loadingColor" size="small" />
     <span v-else class="button-content">
@@ -21,6 +22,7 @@
 const props = defineProps({
   onClick: Function,
   label: String,
+  tooltip: String,
   icon: String,
   loading: {
     type: Boolean,

@@ -3,7 +3,7 @@
     
     <div class="breadcrumbs-container">
       <!-- <Breadcrumbs v-if="!isMobile" /> -->
-      <Button variant="flat" @click="showModal = true" style="color: whitesmoke">
+      <Button variant="flat" @click="showModal = true" style="color: whitesmoke" :tooltip="$t('change_language')">
         <template #prepend>
           <MdiIcon icon="mdiTranslate" size="18" />
         </template>
