@@ -11,6 +11,8 @@ export default defineI18nConfig(() => ({
             systems: 'Sistemas',
             about: 'Sobre',
             contact: 'Contato',
+            tecnologies: 'Tecnologias Utilizadas',
+            os: 'Sistemas Operacionais',
             about_text: 'Olá, meu nome é Allyson. Sou desenvolvedor de software há 3 anos profissionalmente.'
         },
         en: {
@@ -22,6 +24,8 @@ export default defineI18nConfig(() => ({
             systems: 'Systems',
             about: 'About',
             contact: 'Contact',
+            tecnologies: 'Tecnologies Used',
+            os: 'Operating Systems',
             about_text: 'Hi, my name is Allyson. I am a 3 years professional software developer.'
         },
     }

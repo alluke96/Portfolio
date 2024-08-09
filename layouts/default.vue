@@ -1,9 +1,14 @@
 <template>
   <div class="layout-container">
     
-    <!-- <div class="breadcrumbs-container">
-      <Breadcrumbs v-if="!isMobile" />
-    </div> -->
+    <div class="breadcrumbs-container">
+      <!-- <Breadcrumbs v-if="!isMobile" /> -->
+      <Button variant="flat" @click="showModal = true" style="color: whitesmoke">
+        <template #prepend>
+          <MdiIcon icon="mdiTranslate" size="18" />
+        </template>
+      </Button>
+    </div>
 
     <div class="header-container" v-if="$route.path !== '/pt' && $route.path !== '/en' && $route.path !== '/pt/' && $route.path !== '/en/'">
       <Header />
@@ -25,7 +30,7 @@
 
     <NuxtPage />
 
-    <ModalLanguage />
+    <ModalLanguage :showModal="showModal" @close="showModal = false" />
     
   </div>
 </template>
@@ -33,6 +38,8 @@
 <script setup>
   const { locale } = useI18n();
   const isMobile = computed(() => { if(process.browser) return window.innerWidth < 768 ? true : false });
+
+  const showModal = ref(false);
 
   const goToAbout = () => {
     navigateTo({ path: `/${locale.value}/about` });

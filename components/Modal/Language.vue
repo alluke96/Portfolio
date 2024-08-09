@@ -26,8 +26,24 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, watch } from 'vue';
+import { useI18n } from 'vue-i18n'
+
 const { locale } = useI18n();
-const showModal = ref(false);
+
+const emit = defineEmits(['close']);
+const props = defineProps({
+    showModal: {
+        type: Boolean,
+        default: false
+    }
+})
+
+const showModal = ref(props.showModal);
+
+watch(() => props.showModal, (newValue) => {
+    showModal.value = newValue;
+});
 
 const checkModalStatus = () => {
     const hasSeenModal = localStorage.getItem('hasSeenModal');
@@ -35,13 +51,15 @@ const checkModalStatus = () => {
         showModal.value = true;
     }
 };
+
 onMounted(() => {
     checkModalStatus();
 });
 
 const selectLanguage = (newLocale: string) => {
-    showModal.value = false;
     locale.value = newLocale
+    showModal.value = false
+    emit('close');
     // localStorage.setItem('hasSeenModal', 'true');
     // Change route from pt to en (old locale to new locale)
     navigateTo({ path: `/${newLocale}` });

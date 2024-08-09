@@ -45,7 +45,6 @@ const images = [
 ];
 
 const openCategory = (name: string) => {
-    console.log(name);
     navigateTo({ path: `/${locale.value}/${name}` });
 }
 </script>
