@@ -1,16 +1,15 @@
 <template>
   <main>
     <ClientOnly>
-      <div v-if="clientReady">
-        <div ref="track" id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-          <div v-for="(image, index) in images" :key="index" @click="handleClick(image.onClick)">
-            <span class="image-title">{{ image.title }}</span>
-            <img
-              class="image"
-              :src="image.src"
-              draggable="false"
-            />
-          </div>
+      <Loading v-if="loading" />
+      <div v-else ref="track" id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+        <div v-for="(image, index) in images" :key="index" @click="handleClick(image.onClick)">
+          <span class="image-title">{{ image.title }}</span>
+          <img
+            class="image"
+            :src="image.src"
+            draggable="false"
+          />
         </div>
       </div>
     </ClientOnly>
@@ -28,6 +27,7 @@ const prevPercentage = ref(0);
 const percentage = ref(0);
 const isDragging = ref(false);
 const clickThreshold = 5;
+const loading = ref(true);
 
 const handleOnDown = (e) => {
   mouseDownAt.value = e.clientX;
@@ -68,15 +68,43 @@ const handleClick = (onClick) => {
   }
 };
 
+const preloadImages = () => {
+  return new Promise((resolve) => {
+    let loadedImages = 0;
+    const totalImages = props.images.length;
+
+    props.images.forEach((image) => {
+      const img = new Image();
+      img.src = image.src;
+      img.onload = () => {
+        loadedImages += 1;
+        if (loadedImages === totalImages) {
+          resolve();
+        }
+      };
+    });
+  });
+};
+
 const clientReady = ref(false);
-onMounted(() => {
+onMounted(async () => {
   clientReady.value = true;
-  window.addEventListener('mousedown', handleOnDown);
-  window.addEventListener('touchstart', (e) => handleOnDown(e.touches[0]));
-  window.addEventListener('mouseup', handleOnUp);
-  window.addEventListener('touchend', (e) => handleOnUp(e.touches[0]));
-  window.addEventListener('mousemove', handleOnMove);
-  window.addEventListener('touchmove', (e) => handleOnMove(e.touches[0]));
+
+  await preloadImages();
+
+  loading.value = false;
+  
+  nextTick(() => {
+    if (track.value) {
+      track.value.classList.add('animate-in');
+    }
+    window.addEventListener('mousedown', handleOnDown);
+    window.addEventListener('touchstart', (e) => handleOnDown(e.touches[0]));
+    window.addEventListener('mouseup', handleOnUp);
+    window.addEventListener('touchend', (e) => handleOnUp(e.touches[0]));
+    window.addEventListener('mousemove', handleOnMove);
+    window.addEventListener('touchmove', (e) => handleOnMove(e.touches[0]));
+  });
 });
 
 onUnmounted(() => {
@@ -102,10 +130,25 @@ body {
   display: flex;
   gap: 4vmin;
   position: absolute;
-  left: 25%;
+  left: 100%; /* Inicia fora da tela */
   top: 50%;
   transform: translate(0%, -50%);
   user-select: none;
+  visibility: hidden; /* Esconde o track até a animação começar */
+}
+
+.animate-in {
+  visibility: visible !important;
+  animation: slide-in 1s ease-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 25%;
+  }
 }
 
 #image-track > div > .image {

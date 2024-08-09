@@ -59,8 +59,8 @@ onMounted(() => {
 const selectLanguage = (newLocale: string) => {
     locale.value = newLocale
     showModal.value = false
-    emit('close');
     // localStorage.setItem('hasSeenModal', 'true');
+    emit('close');
     // Change route from pt to en (old locale to new locale)
     navigateTo({ path: `/${newLocale}` });
 };
