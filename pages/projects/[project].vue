@@ -24,7 +24,7 @@
     </div>
 
     <div class="right-side">
-      <img v-for="(img, index) in project.images" :src="img" :key="index" alt="Project Image" @click="openModal(img)">
+      <img v-for="(img, index) in project.images" :src="img" :key="index" alt="Project Image" @click="openModal(img, index)">
     </div>
 
     <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
