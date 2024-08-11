@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h2 style="color: whitesmoke">{{ $t('about_text') }}</h2>
+        <pre style="color: whitesmoke">{{ $t('about_text') }}</pre>
     </main>
 </template>
 
@@ -13,5 +13,9 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+pre {
+    font-size: 1rem;
 }
 </style>
