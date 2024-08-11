@@ -253,6 +253,7 @@ a {
 .modal-content img {
   width: auto;
   height: auto;
+  max-width: 80vw;
   max-height: 80vh;
   object-fit: cover;
   border-radius: 4px;
