@@ -3,11 +3,7 @@
     
     <div class="breadcrumbs-container">
       <!-- <Breadcrumbs v-if="!isMobile" /> -->
-      <Button variant="flat" @click="showModal = true" style="color: whitesmoke" :tooltip="$t('change_language')">
-        <template #prepend>
-          <MdiIcon icon="mdiTranslate" size="18" />
-        </template>
-      </Button>
+      <Button variant="flat" @click="goBack" style="color: whitesmoke" :label="$t('back')" />
     </div>
 
     <div class="header-container" v-if="$route.path !== '/pt' && $route.path !== '/en' && $route.path !== '/pt/' && $route.path !== '/en/'">
@@ -18,6 +14,14 @@
       ALLYSON<br>
       DUNKE
     </h1>
+
+    <div class="language-container">
+      <Button variant="flat" @click="showModal = true" style="color: whitesmoke" :tooltip="$t('change_language')">
+        <template #prepend>
+          <MdiIcon icon="mdiTranslate" size="18" />
+        </template>
+      </Button>
+    </div>
 
     <footer>
       <a href="https://github.com/alluke96" target="_blank">
@@ -37,12 +41,17 @@
 
 <script setup>
   const { locale } = useI18n();
+  const router = useRouter();
   const isMobile = computed(() => { if(process.browser) return window.innerWidth < 768 ? true : false });
 
   const showModal = ref(false);
 
   const goToAbout = () => {
     navigateTo({ path: `/${locale.value}/about` });
+  }
+
+  const goBack = () => {
+    router.back();
   }
 </script>
 
@@ -88,6 +97,12 @@ body {
 .breadcrumbs-container {
   position: absolute;
   top: 20px;
+  left: 20px;
+}
+
+.language-container {
+  position: absolute;
+  bottom: 20px;
   left: 20px;
 }
 

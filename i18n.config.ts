@@ -4,6 +4,7 @@ export default defineI18nConfig(() => ({
     messages: {
         pt: {
             change_language: 'Mudar Idioma',
+            back: 'Voltar',
             home: 'Início',
             games: 'Jogos',
             apps: 'Apps',
@@ -18,6 +19,7 @@ export default defineI18nConfig(() => ({
         },
         en: {
             change_language: 'Change Language',
+            back: 'Back',
             home: 'Home',
             games: 'Games',
             apps: 'Apps',
