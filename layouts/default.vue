@@ -1,7 +1,7 @@
 <template>
   <div class="layout-container">
     
-    <div class="breadcrumbs-container">
+    <div class="breadcrumbs-container" v-if="$route.path !== '/pt' && $route.path !== '/en' && $route.path !== '/pt/' && $route.path !== '/en/'">
       <!-- <Breadcrumbs v-if="!isMobile" /> -->
       <Button variant="flat" @click="goBack" style="color: whitesmoke" :label="$t('back')" />
     </div>

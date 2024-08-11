@@ -15,6 +15,12 @@ export default defineI18nConfig(() => ({
             contact: 'Contato',
             tecnologies: 'Tecnologias Utilizadas',
             os: 'Sistemas Operacionais',
+            name: 'Nome',
+            message: 'Mensagem',
+            submit: 'Enviar',
+            contact_me: 'Entre em contato comigo',
+            contact_me_wpp: 'Entre em contato comigo no WhatsApp',
+            error_contact: 'Erro. Tente no WhatsApp, por gentileza.',
             about_text: `Desenvolvedor fullstack e mobile com três anos de experiência na criação e manutenção de aplicativos, sistemas e sites.
                 \n\nMinhas principais competências tecnológicas incluem:
                 \n* Vue.js com Nuxt.js no frontend e Node.js com Express no backend para desenvolvimento web;
@@ -40,6 +46,12 @@ export default defineI18nConfig(() => ({
             contact: 'Contact',
             tecnologies: 'Tecnologies Used',
             os: 'Operating Systems',
+            name: 'Name',
+            message: 'Message',
+            submit: 'Submit',
+            contact_me: 'Contact me',
+            contact_me_wpp: 'Contact me on WhatsApp',
+            error_contact: 'Error. Please try Whatsapp, please.',
             about_text: `Fullstack and mobile developer with three years of experience in creating and maintaining applications, systems, and websites.
                 \n\nMy main technical skills include:
                 \n* Vue.js with Nuxt.js on frontend and Node.js with Express on backend for web development;
