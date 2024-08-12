@@ -7,7 +7,7 @@
     <div v-if="showMenu" class="menu-overlay" @click.self="closeMenu">
       <div class="mobile-menu">
         <button v-for="title in titles" :key="title.path" @click="goToPage(title.path)">
-          {{title.label}}
+          <span :style="{ color: isCurrentPage(title.path) ? '#4ADE80' : 'whitesmoke' }">{{title.label}}</span>
         </button>
       </div>
     </div>
