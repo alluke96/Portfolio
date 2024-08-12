@@ -1,13 +1,16 @@
 <template>
   <div class="layout-container">
+
+    <NuxtPage />
     
     <div class="breadcrumbs-container" v-if="$route.path !== '/pt' && $route.path !== '/en' && $route.path !== '/pt/' && $route.path !== '/en/'">
       <!-- <Breadcrumbs v-if="!isMobile" /> -->
-      <Button variant="flat" @click="goBack" style="color: whitesmoke" :label="$t('back')" />
+      <Button variant="flat" @click="goBack" style="color: whitesmoke" :label="$t('back')" v-if="!isMobile" />
+      <Hamburger v-else />
     </div>
 
     <div class="header-container" v-if="$route.path !== '/pt' && $route.path !== '/en' && $route.path !== '/pt/' && $route.path !== '/en/'">
-      <Header />
+      <Header v-if="!isMobile" />
     </div>
 
     <h1 class="logo-container" @click="goToAbout">
@@ -31,8 +34,6 @@
         <MdiIcon icon="mdiLinkedin" />
       </a>
     </footer>
-
-    <NuxtPage />
 
     <ModalLanguage :showModal="showModal" @close="showModal = false" />
     
@@ -84,6 +85,26 @@ body {
 </style>
 
 <style scoped>
+.menu-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+    right: 10px;
+  }
+
+  .breadcrumbs-container,
+  .language-container {
+    left: 10px;
+    bottom: 10px;
+  }
+}
+
 .layout-container {
   display: flex;
   flex-direction: column;
