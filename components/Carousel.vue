@@ -152,12 +152,21 @@ body {
 }
 
 #image-track > div > .image {
-  width: 40vmax;
-  height: 56vmax;
+  width: 40vmin;
+  height: 56vmin;
   object-fit: cover;
   object-position: 100% center;
   cursor: pointer;
   border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  #image-track > div > .image {
+    width: 40vmax;
+    height: 56vmax;
+    max-height: 70vh;
+    max-width: 90vw;
+  }
 }
 
 #image-track > div {
