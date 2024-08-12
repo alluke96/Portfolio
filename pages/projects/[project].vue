@@ -187,9 +187,16 @@ main {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  width: 50vw;
-  height: 80vh;
+  width: 80vmax;
+  height: 70vmax;
   gap: 20px;
+  overflow: auto;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    flex-direction: column;
+  }
 }
 
 .left-side {

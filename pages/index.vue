@@ -5,6 +5,10 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  title: 'Allyson Dunke | Portfolio',
+})
+
 const { locale, t } = useI18n();
 const images = [
     {
@@ -54,5 +58,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    max-height: 70vh;
+    max-width: 90vw;
+    overflow: auto;
 }
 </style>

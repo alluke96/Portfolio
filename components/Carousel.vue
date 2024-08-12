@@ -129,7 +129,7 @@ body {
 #image-track {
   display: flex;
   gap: 4vmin;
-  position: absolute;
+  position: fixed;
   left: 100%; /* Inicia fora da tela */
   top: 50%;
   transform: translate(0%, -50%);
@@ -152,8 +152,8 @@ body {
 }
 
 #image-track > div > .image {
-  width: 40vmin;
-  height: 56vmin;
+  width: 40vmax;
+  height: 56vmax;
   object-fit: cover;
   object-position: 100% center;
   cursor: pointer;
@@ -172,6 +172,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-size: 1.5rem;
   position: absolute;
   top: 0%;

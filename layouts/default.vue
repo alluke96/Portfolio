@@ -41,19 +41,19 @@
 </template>
 
 <script setup>
-  const { locale } = useI18n();
-  const router = useRouter();
-  const isMobile = computed(() => { if(process.browser) return window.innerWidth < 768 ? true : false });
+const { locale } = useI18n();
+const router = useRouter();
+const isMobile = computed(() => { if(process.browser) return window.innerWidth < 768 ? true : false });
 
-  const showModal = ref(false);
+const showModal = ref(false);
 
-  const goToAbout = () => {
-    navigateTo({ path: `/${locale.value}/about` });
-  }
+const goToAbout = () => {
+  navigateTo({ path: `/${locale.value}/about` });
+}
 
-  const goBack = () => {
-    router.back();
-  }
+const goBack = () => {
+  router.back();
+}
 </script>
 
 
