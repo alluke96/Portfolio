@@ -95,6 +95,7 @@ onMounted(() => {
 })
 
 const projectList = [
+    // Games
     {
         title: 'A Vida de um Gato',
         code: 'a_vida_de_um_gato',
@@ -158,6 +159,24 @@ const projectList = [
         os: ['Web', 'Android'],
         link: 'https://lamers.itch.io/capture-the-flags',
         images: ['/img/games/capture_the_flags.png', '/img/games/capture_the_flags_2.png', '/img/games/capture_the_flags_3.png', '/img/games/capture_the_flags_4.png'],
+    },
+
+    // Apps
+    {
+        title: 'MemoLetras',
+        code: 'memoletras',
+        tecnologies: ['Flutter', 'Dart'],
+        os: ['Android'],
+        link: 'https://play.google.com/store/apps/details?id=com.quinyx.memorialetras',
+        images: ['/img/apps/memoletras.png', '/img/apps/memoletras_2.png', '/img/apps/memoletras_3.png', '/img/apps/memoletras_4.png'],
+    },
+    {
+        title: 'Para aprender e memorizar',
+        code: 'para_aprender_e_memorizar',
+        tecnologies: ['Flutter', 'Dart'],
+        os: ['Android'],
+        link: 'https://play.google.com/store/apps/details?id=com.quinyx.para_aprender_e_memorizar',
+        images: ['/img/apps/para_aprender_e_memorizar.png', '/img/apps/para_aprender_e_memorizar_2.png', '/img/apps/para_aprender_e_memorizar_3.png', '/img/apps/para_aprender_e_memorizar_4.png'],
     },
 ]
 </script>
