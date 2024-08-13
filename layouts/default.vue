@@ -43,7 +43,15 @@
 <script setup>
 const { locale } = useI18n();
 const router = useRouter();
-const isMobile = computed(() => { if(process.browser) return window.innerWidth < 768 ? true : false });
+
+const isMobile = ref(false);
+
+onMounted(() => {
+  isMobile.value = window.innerWidth < 768;
+  window.addEventListener('resize', () => {
+    isMobile.value = window.innerWidth < 768;
+  });
+});
 
 const showModal = ref(false);
 
@@ -55,34 +63,6 @@ const goBack = () => {
   router.back();
 }
 </script>
-
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.4s;
-}
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  /* filter: blur(1rem); */
-}
-
-html {
-  overflow: hidden;
-  font-family: "Open Sans", sans-serif;
-  background-color: #121212;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-}
-</style>
 
 <style scoped>
 .menu-icon {

@@ -26,8 +26,8 @@ const mouseDownAt = ref(0);
 const prevPercentage = ref(0);
 const percentage = ref(0);
 const isDragging = ref(false);
-const clickThreshold = 5;
 const loading = ref(true);
+const clickThreshold = 5;
 
 const handleOnDown = (e) => {
   mouseDownAt.value = e.clientX;
@@ -55,11 +55,13 @@ const handleOnMove = (e) => {
 
   percentage.value = nextPercentage;
 
-  track.value.style.transform = `translate(${nextPercentage}%, -50%)`;
+  if (track.value) {
+    track.value.style.transform = `translate(${nextPercentage}%, -50%)`;
 
-  Array.from(track.value.getElementsByClassName('image')).forEach((image) => {
-    image.style.objectPosition = `${100 + nextPercentage}% center`;
-  });
+    Array.from(track.value.getElementsByClassName('image')).forEach((image) => {
+      image.style.objectPosition = `${100 + nextPercentage}% center`;
+    });
+  }
 };
 
 const handleClick = (onClick) => {
@@ -86,15 +88,12 @@ const preloadImages = () => {
   });
 };
 
-const clientReady = ref(false);
 onMounted(async () => {
-  clientReady.value = true;
-
   await preloadImages();
 
   loading.value = false;
   
-  nextTick(() => {
+  await nextTick(() => {
     if (track.value) {
       track.value.classList.add('animate-in');
     }

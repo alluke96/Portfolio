@@ -5,10 +5,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  title: 'Allyson Dunke | Portfolio',
-})
-
 const { locale, t } = useI18n();
 const images = [
     {

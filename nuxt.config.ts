@@ -6,7 +6,11 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/',
     buildAssetsDir: 'public',
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'in-out' },
+    head: {
+      htmlAttrs: { lang: 'pt' },
+      title: 'Allyson Dunke | Portfolio',
+    }
   },
   pinia: {
     storesDirs: ['./stores/**'],

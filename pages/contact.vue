@@ -90,8 +90,8 @@ button:hover {
 
 .whatsapp {
   position: fixed;
-  bottom: 60px;
-  right: 60px;
+  bottom: 20%;
+  right: 10%;
 }
 
 .whatsapp a {
