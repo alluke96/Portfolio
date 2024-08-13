@@ -30,8 +30,8 @@ export default defineNuxtConfig({
     strategy: 'prefix_except_default', // ou 'no_prefix'
     pages: {
       index: {
-        en: '/en/',
-        pt: '/pt/',
+        en: '/en',
+        pt: '/',
       },
     },
   }
