@@ -602,7 +602,7 @@ const projectList = [
         code: 'bookings',
         tecnologies: ['Vue.js', 'JavaScript', 'HTML', 'CSS', 'Nuxt.js', 'PostgresSQL', 'Express', 'Node.js'],
         os: ['Web'],
-        link: 'https://bookings.quinyxcompany.com.br/',
+        link: 'https://bookings.quinyxcompany.com/',
         images: ['/img/web/bookings.png', '/img/web/bookings_2.png', '/img/web/bookings_3.png', '/img/web/bookings_4.png'],
     },
 
