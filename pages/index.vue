@@ -8,14 +8,9 @@
 const { locale, t } = useI18n();
 const images = [
     {
-        src: "/img/thumbs/games.jpg",
-        onClick: () => openCategory("games"),
-        title: t("games"),
-    },
-    {
-        src: "/img/thumbs/apps.jpg",
-        onClick: () => openCategory("apps"),
-        title: t("apps"),
+        src: "/img/thumbs/about.jpg",
+        onClick: () => openCategory("about"),
+        title: t("about"),
     },
     {
         src: "/img/thumbs/web.jpg",
@@ -23,20 +18,25 @@ const images = [
         title: t("web"),
     },
     {
+        src: "/img/thumbs/apps.jpg",
+        onClick: () => openCategory("apps"),
+        title: t("apps"),
+    },
+    {
         src: "/img/thumbs/government.jpg",
         onClick: () => openCategory("government"),
         title: t("government"),
     },
     {
-        src: "/img/thumbs/systems.jpg",
-        onClick: () => openCategory("systems"),
-        title: t("systems"),
+        src: "/img/thumbs/games.jpg",
+        onClick: () => openCategory("games"),
+        title: t("games"),
     },
-    {
-        src: "/img/thumbs/about.jpg",
-        onClick: () => openCategory("about"),
-        title: t("about"),
-    },
+    // {
+    //     src: "/img/thumbs/systems.jpg",
+    //     onClick: () => openCategory("systems"),
+    //     title: t("systems"),
+    // },
     {
         src: "/img/thumbs/contact.jpg",
         onClick: () => openCategory("contact"),

@@ -24,29 +24,29 @@ const titles = computed (() => ([
     path: "/",
   },
   {
-    label: t("games"),
-    path: "/games",
-  },
-  {
-    label: t("apps"),
-    path: "/apps",
+    label: t("about"),
+    path: "/about",
   },
   {
     label: t("web"),
     path: "/web",
   },
   {
+    label: t("apps"),
+    path: "/apps",
+  },
+  {
     label: t("government"),
     path: "/government",
   },
   {
-    label: t("systems"),
-    path: "/systems",
+    label: t("games"),
+    path: "/games",
   },
-  {
-    label: t("about"),
-    path: "/about",
-  },
+  // {
+  //   label: t("systems"),
+  //   path: "/systems",
+  // },
   {
     label: t("contact"),
     path: "/contact",

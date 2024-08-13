@@ -3,6 +3,7 @@
     <ClientOnly>
       <Loading v-if="loading" />
       <div v-else ref="track" id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+        <MdiIcon icon="mdiArrowLeft" class="nav-left" :class="{ 'grabbing': isGrabbing }" />
         <div v-for="(image, index) in images" :key="index" @click="handleClick(image.onClick)">
           <span class="image-title">{{ image.title }}</span>
           <img
@@ -26,17 +27,20 @@ const mouseDownAt = ref(0);
 const prevPercentage = ref(0);
 const percentage = ref(0);
 const isDragging = ref(false);
+const isGrabbing = ref(false);
 const loading = ref(true);
 const clickThreshold = 5;
 
 const handleOnDown = (e) => {
   mouseDownAt.value = e.clientX;
   isDragging.value = false;
+  isGrabbing.value = true;
 };
 
 const handleOnUp = (e) => {
   mouseDownAt.value = 0;
   prevPercentage.value = percentage.value;
+  isGrabbing.value = false;
 };
 
 const handleOnMove = (e) => {
@@ -134,6 +138,7 @@ body {
   transform: translate(0%, -50%);
   user-select: none;
   visibility: hidden; /* Esconde o track até a animação começar */
+  cursor: grab;
 }
 
 .animate-in {
@@ -185,9 +190,25 @@ body {
   position: absolute;
   top: 0%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -100%);
   z-index: 1;
   font-weight: bold;
   text-shadow: -1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, 1px 1px 0 #000;
+}
+
+.nav-left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  z-index: 1;
+  cursor: grab;
+  font-size: 100px;
+  color: whitesmoke;
+  opacity: 0.1;
+}
+
+.grabbing {
+  cursor: grabbing !important;
 }
 </style>

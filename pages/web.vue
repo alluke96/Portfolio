@@ -5,9 +5,44 @@
 </template>
 
 <script setup lang="ts">
+const { locale, t } = useI18n();
+
 const images = [
-    "https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-]
+    {
+        src: "/img/web/mesinha_digital.png",
+        onClick: () => openProject("mesinha_digital"),
+        title: "Mesinha Digital",
+    },
+    {
+        src: "/img/web/traceboard.png",
+        onClick: () => openProject("traceboard"),
+        title: "Traceboard",
+    },
+    {
+        src: "/img/web/vino.png",
+        onClick: () => openProject("vino"),
+        title: "Vino & Mare",
+    },
+    {
+        src: "/img/web/parceiros.png",
+        onClick: () => openProject("parceiros"),
+        title: "Parceiros SIEG-AD",
+    },
+    {
+        src: "/img/web/portal_md.png",
+        onClick: () => openProject("portalmd"),
+        title: "Portal Mesinha Digital",
+    },
+    {
+        src: "/img/web/bookings.png",
+        onClick: () => openProject("bookings"),
+        title: "Reserva de Oportunidades",
+    },
+];
+
+const openProject = (project: string) => {
+    navigateTo(`/${locale.value}/projects/${project}`);
+}
 </script>
 
 <style scoped>

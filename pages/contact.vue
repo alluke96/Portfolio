@@ -1,6 +1,6 @@
 <template>
-  <div class="contact-page">
-    <h2 style="color: whitesmoke;">{{ $t('contact_me') }}</h2>
+  <main class="contact-page">
+    <h2>{{ $t('contact_me') }}</h2>
 
     <form @submit.prevent="submitForm">
       <div class="form-group">
@@ -28,7 +28,7 @@
         {{ $t('contact_me_wpp') }}
       </a>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
@@ -58,6 +58,10 @@ const submitForm = () => {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+}
+
+h2 {
+  color: whitesmoke;
 }
 
 .form-group {
