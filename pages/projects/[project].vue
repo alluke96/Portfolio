@@ -672,6 +672,7 @@ main {
   height: 70vmax;
   gap: 20px;
   overflow: auto;
+  position: absolute;
 }
 
 @media screen and (max-width: 600px) {
@@ -803,14 +804,14 @@ a {
 }
 
 .nav-project.left {
-  position: absolute;
+  position: fixed;
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .nav-project.right {
-  position: absolute;
+  position: fixed;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
